@@ -30,6 +30,3 @@ app.MapControllerRoute(
 
 app.Run();
 
-//app.Run( async (contexto) => {
-//    //await contexto.Response.WriteAsync(" Metodo Run");
-//});
