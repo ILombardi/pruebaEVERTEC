@@ -1,0 +1,58 @@
+﻿@model List<Movie>;
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form asp-action="BuscarPorTitulo" asp-controller="Home" method="get">
+    <div class="input-group mb-3">
+
+
+        <input name="title" id="buscar" type="text" class="form-control" placeholder="Consultar pelicula" aria-label="Consultar pelicula" aria-describedby="button-addon2" required>
+        <input type="submit" value="Buscar" class="btn btn-outline-secondary">
+     
+        @*<button class="btn btn-outline-secondary" type="submit" id="button-addon2">Buscar</button>*@
+        @* <a asp-action="BuscarPorTitulo" asp-controller="Home" asp-route-title="" class="btn btn-outline-secondary">Buscar</a>*@
+
+
+    </div>
+    <div class="invalid-feedback">
+        Please provide a valid city.
+    </div>
+</form>
+
+
+<div class="text-center">
+    <h1 class="display-4">Listado de peliculas</h1>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        @foreach(var item in Model)
+        {
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-2">
+                        <img src="@item.Poster" class="img-thumbnail" alt="...">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text"><small class="text-muted">@item.Year</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
