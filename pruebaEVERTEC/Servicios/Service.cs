@@ -26,18 +26,15 @@ namespace pruebaEVERTEC.Servicios
 
         public async Task<List<Movie>> GetMoviesAsync()
         {
-            var response = await httpClient.GetFromJsonAsync<SearchResponse>($"?apikey={apiKey}&s=full");
-            
-            return response.Search.Select(m => new Movie { Title = m.Title, Poster = m.Poster, Year = m.Year, imdbID = m.imdbID }).ToList();
-          
+            var response = await httpClient.GetFromJsonAsync<SearchResponse>($"?apikey={apiKey}&s=full");            
+            return response.Search.Select(m => new Movie { Title = m.Title, Poster = m.Poster, Year = m.Year, imdbID = m.imdbID }).ToList(); 
 
         }
 
         public async Task<List<Movie>> SearchMoviesAsync(string searchTerm)
         {
             var response = await httpClient.GetFromJsonAsync<SearchResponse>($"?apikey={apiKey}&s={searchTerm}");
-            return response.Search.Select(m => new Movie { Title = m.Title, Poster = m.Poster, Year = m.Year, imdbID = m.imdbID }).ToList();                                       
-            
+            return response.Search.Select(m => new Movie { Title = m.Title, Poster = m.Poster, Year = m.Year, imdbID = m.imdbID }).ToList();                                                   
         }
     }
 
